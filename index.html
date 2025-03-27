@@ -53,42 +53,53 @@
         <p>Ce site est un site non officiel créé par un étudiant de DCG/DGC qui met à disposition les différents sujets de l'INTEC aux épreuves depuis la réforme de 2020. Bon courage pour vos révisions !</p>
         
         <p>Retrouvez ici les documents pour préparer votre DCG.</p>
-        
-        <script>
-            let ueList = [
-                "Fondamentaux du droit", "Droit des sociétés", "Droit social", "Droit fiscal", "Économie",
-                "Finance d'entreprise", "Management", "Systèmes d'information de gestion", "Comptabilité",
-                "Comptabilité approfondie", "Contrôle de gestion", "Anglais des affaires"
-            ];
-            
-            ueList.forEach((ue, index) => {
-                document.write(`
-                    <div class="document">
-                        <h3>UE ${index + 1} - ${ue}</h3>
-                        <span class="option" onclick="showOptions(${index + 1})">Voir les examens</span>
-                    </div>
-                    <div id="options-${index + 1}" class="options hidden">
-                        <span class="option" onclick="showYears(${index + 1}, 'essais')">Examens d'essais</span>
-                        <span class="option" onclick="showYears(${index + 1}, 'finaux')">Examens finaux</span>
-                    </div>
-                    <div id="years-${index + 1}-essais" class="years hidden">
-                        ${generateYearLinks(index + 1, 'essais')}
-                    </div>
-                    <div id="years-${index + 1}-finaux" class="years hidden">
-                        ${generateYearLinks(index + 1, 'finaux')}
-                    </div>
-                `);
-            });
-            
-            function generateYearLinks(ue, type) {
-                let links = "";
-                for (let year = 2024; year >= 2020; year--) {
-                    links += `<a href="fichiers/UE${ue}_${type}_${year}.pdf" target="_blank">Sujet ${year}</a> - 
-                              <a href="fichiers/UE${ue}_${type}_${year}_corrige.pdf" target="_blank">Corrigé ${year}</a><br>`;
-                }
-                return links;
-            }
-        </script>
+
+        <!-- UE 1 - Fondamentaux du droit -->
+        <div class="document">
+            <h3>UE 1 - Fondamentaux du droit</h3>
+            <span class="option" onclick="showOptions(1)">Voir les examens</span>
+        </div>
+        <div id="options-1" class="options hidden">
+            <span class="option" onclick="showYears(1, 'essais')">Examens d'essais</span>
+            <span class="option" onclick="showYears(1, 'finaux')">Examens finaux</span>
+        </div>
+        <div id="years-1-essais" class="years hidden">
+            <a href="fichiers/UE1_essais_2024.pdf" target="_blank">Sujet essais 2024</a> - 
+            <a href="fichiers/UE1_essais_2024_corrige.pdf" target="_blank">Corrigé essais 2024</a><br>
+            <a href="fichiers/UE1_essais_2023.pdf" target="_blank">Sujet essais 2023</a> - 
+            <a href="fichiers/UE1_essais_2023_corrige.pdf" target="_blank">Corrigé essais 2023</a><br>
+        </div>
+        <div id="years-1-finaux" class="years hidden">
+            <a href="fichiers/UE1_final_2024.pdf" target="_blank">Sujet final 2024</a> - 
+            <a href="fichiers/UE1_final_2024_corrige.pdf" target="_blank">Corrigé final 2024</a><br>
+            <a href="fichiers/UE1_final_2023.pdf" target="_blank">Sujet final 2023</a> - 
+            <a href="fichiers/UE1_final_2023_corrige.pdf" target="_blank">Corrigé final 2023</a><br>
+        </div>
+
+        <!-- Répéter pour chaque UE -->
+        <!-- UE 2 - Droit des sociétés -->
+        <div class="document">
+            <h3>UE 2 - Droit des sociétés</h3>
+            <span class="option" onclick="showOptions(2)">Voir les examens</span>
+        </div>
+        <div id="options-2" class="options hidden">
+            <span class="option" onclick="showYears(2, 'essais')">Examens d'essais</span>
+            <span class="option" onclick="showYears(2, 'finaux')">Examens finaux</span>
+        </div>
+        <div id="years-2-essais" class="years hidden">
+            <a href="fichiers/UE2_essais_2024.pdf" target="_blank">Sujet essais 2024</a> - 
+            <a href="fichiers/UE2_essais_2024_corrige.pdf" target="_blank">Corrigé essais 2024</a><br>
+            <a href="fichiers/UE2_essais_2023.pdf" target="_blank">Sujet essais 2023</a> - 
+            <a href="fichiers/UE2_essais_2023_corrige.pdf" target="_blank">Corrigé essais 2023</a><br>
+        </div>
+        <div id="years-2-finaux" class="years hidden">
+            <a href="fichiers/UE2_final_2024.pdf" target="_blank">Sujet final 2024</a> - 
+            <a href="fichiers/UE2_final_2024_corrige.pdf" target="_blank">Corrigé final 2024</a><br>
+            <a href="fichiers/UE2_final_2023.pdf" target="_blank">Sujet final 2023</a> - 
+            <a href="fichiers/UE2_final_2023_corrige.pdf" target="_blank">Corrigé final 2023</a><br>
+        </div>
+
+        <!-- Ajouter des sections pour chaque UE suivante de la même manière -->
     </div>
 </body>
 </html>
