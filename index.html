@@ -50,7 +50,7 @@
 <body>
     <div class="container">
         <h1>Sujet INTEC DCG</h1>
-        <p>Ce site est un site non officiel créé par un étudiant de DCG/DGC qui met à disposition les différents sujets de l'INTEC aux épreuves. Bon courage pour vos révisions !</p>
+        <p>Ce site est un site non officiel créé par un étudiant de DCG/DGC qui met à disposition les différents sujets de l'INTEC aux épreuves depuis la réforme de 2020. Bon courage pour vos révisions !</p>
         
         <p>Retrouvez ici les documents pour préparer votre DCG.</p>
         
@@ -82,7 +82,7 @@
             
             function generateYearLinks(ue, type) {
                 let links = "";
-                for (let year = 2024; year >= 2010; year--) {
+                for (let year = 2024; year >= 2020; year--) {
                     links += `<a href="fichiers/UE${ue}_${type}_${year}.pdf" target="_blank">Sujet ${year}</a> - 
                               <a href="fichiers/UE${ue}_${type}_${year}_corrige.pdf" target="_blank">Corrigé ${year}</a><br>`;
                 }
