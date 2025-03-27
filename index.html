@@ -15,86 +15,78 @@
             max-width: 600px;
             margin: auto;
         }
-        .document {
+        .document, .options, .years {
             margin: 10px 0;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        a {
+        a, .option {
             text-decoration: none;
             color: white;
             background: #007bff;
             padding: 10px;
             border-radius: 5px;
             display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
         }
     </style>
+    <script>
+        function showOptions(ue) {
+            document.querySelectorAll('.options').forEach(el => el.classList.add('hidden'));
+            document.getElementById('options-' + ue).classList.remove('hidden');
+        }
+        
+        function showYears(ue, type) {
+            document.querySelectorAll('.years').forEach(el => el.classList.add('hidden'));
+            document.getElementById('years-' + ue + '-' + type).classList.remove('hidden');
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Sujet INTEC DCG</h1>
         <p>Retrouvez ici les documents pour préparer votre DCG.</p>
         
-        <div class="document">
-            <h3>UE 1 - Fondamentaux du droit</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 2 - Droit des sociétés</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 3 - Droit social</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 4 - Droit fiscal</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 5 - Économie</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 6 - Finance d'entreprise</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 7 - Management</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 8 - Systèmes d'information de gestion</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 9 - Comptabilité</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 10 - Comptabilité approfondie</h3>
-            <a href="Examen final UE 120 SESSION 2024.pdf" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 11 - Contrôle de gestion</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
-        
-        <div class="document">
-            <h3>UE 12 - Anglais des affaires</h3>
-            <a href="#" target="_blank">Télécharger</a>
-        </div>
+        <!-- Boucle pour générer les UE -->
+        <script>
+            let ueList = [
+                "Fondamentaux du droit", "Droit des sociétés", "Droit social", "Droit fiscal", "Économie",
+                "Finance d'entreprise", "Management", "Systèmes d'information de gestion", "Comptabilité",
+                "Comptabilité approfondie", "Contrôle de gestion", "Anglais des affaires"
+            ];
+            
+            ueList.forEach((ue, index) => {
+                document.write(`
+                    <div class="document">
+                        <h3>UE ${index + 1} - ${ue}</h3>
+                        <span class="option" onclick="showOptions(${index + 1})">Voir les examens</span>
+                    </div>
+                    <div id="options-${index + 1}" class="options hidden">
+                        <span class="option" onclick="showYears(${index + 1}, 'essais')">Examens d'essais</span>
+                        <span class="option" onclick="showYears(${index + 1}, 'finaux')">Examens finaux</span>
+                    </div>
+                    <div id="years-${index + 1}-essais" class="years hidden">
+                        ${generateYearLinks(index + 1, 'essais')}
+                    </div>
+                    <div id="years-${index + 1}-finaux" class="years hidden">
+                        ${generateYearLinks(index + 1, 'finaux')}
+                    </div>
+                `);
+            });
+            
+            function generateYearLinks(ue, type) {
+                let links = "";
+                for (let year = 2024; year >= 2010; year--) {
+                    links += `<a href="fichiers/UE${ue}_${type}_${year}.pdf" target="_blank">Télécharger ${year}</a><br>`;
+                }
+                return links;
+            }
+        </script>
     </div>
 </body>
 </html>
